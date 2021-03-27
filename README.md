@@ -181,6 +181,8 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
+* [Heroku for Sharing Public Dash apps for Free](https://dash.plotly.com/deployment)
+* [Getting started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python)
 * Chris Bishop “Pattern Recognition and Machine Learning”, Springer, 2006 (main textbook)
 * Tom Mitchell, “Machine Learning”, McGraw Hill, 1997
 * Kevin Murphy, “Machine Learning: A Probabilistic Perspective”, MIT Press, 2012 (advanced)
