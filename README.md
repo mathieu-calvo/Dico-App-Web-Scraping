@@ -183,18 +183,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 ## Acknowledgements
 * [Heroku for Sharing Public Dash apps for Free](https://dash.plotly.com/deployment)
 * [Getting started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python)
-* Chris Bishop “Pattern Recognition and Machine Learning”, Springer, 2006 (main textbook)
-* Tom Mitchell, “Machine Learning”, McGraw Hill, 1997
-* Kevin Murphy, “Machine Learning: A Probabilistic Perspective”, MIT Press, 2012 (advanced)
-* Micheal Bowles, "Machine learning in Python"
-* [Kaggle Datasets](https://www.kaggle.com/datasets)
-* [Towards DS Datasets](https://towardsdatascience.com/all-the-datasets-you-need-to-practice-data-science-skills-and-make-a-great-portfolio-857a348883b5)
-* [Dataquest Datasets](https://www.dataquest.io/blog/free-datasets-for-projects/)
-* [First Apache Spark ML model](https://towardsdatascience.com/your-first-apache-spark-ml-model-d2bb82b599dd)
-* [Distributed Data Processing with Apache Spark](https://medium.com/datadriveninvestor/distributed-data-processing-with-apache-spark-2a5e473b0cb1)
-* [Best README template](https://github.com/othneildrew/Best-README-Template/blob/master/README.md)
-* [Bayesian vs Frequentist video](https://www.youtube.com/watch?v=meivbbfHmK0)
-* [Frequentism and Bayesianism video](https://www.youtube.com/watch?v=KhAUfqhLakw)
+* [From Prototype to Cloud: A Python Recipe Converter](https://www.justinmklam.com/posts/2018/04/python-flask-heroku-tutorial/?c=7013A000000txcVQAQ&utm_campaign=Onboarding-2.0-Deploy-1.1-Python&utm_medium=email&utm_source=nurture&utm_content=community&utm_term=flask-tutorial-recipe-converter)
 
 
 
