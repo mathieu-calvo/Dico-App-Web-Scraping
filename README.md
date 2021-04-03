@@ -184,6 +184,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 * [Heroku for Sharing Public Dash apps for Free](https://dash.plotly.com/deployment)
 * [Getting started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python)
 * [From Prototype to Cloud: A Python Recipe Converter](https://www.justinmklam.com/posts/2018/04/python-flask-heroku-tutorial/?c=7013A000000txcVQAQ&utm_campaign=Onboarding-2.0-Deploy-1.1-Python&utm_medium=email&utm_source=nurture&utm_content=community&utm_term=flask-tutorial-recipe-converter)
+* [Deploying Multi Page App to Heroku](https://community.plotly.com/t/deploying-multi-page-app-to-heroku-not-deploying-as-set-up/7877/4)
 * [README Template](https://github.com/othneildrew/Best-README-Template)
 
 
