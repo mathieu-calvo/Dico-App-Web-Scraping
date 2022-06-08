@@ -11,8 +11,7 @@ class ReversoDictionary:
     
     def __init__(self):
         """
-        Create an instance of object to interact with the Reverso dictionary online and retrieve translations/defitions
-        programmatically, and parse them to have them in a structured format
+        Create an instance of object to interact with the Reverso dictionary online and retrieve translations/defitions programmatically, and parse them to have them in a structured format
         
         Important: when dealing with text, understanding encoding is paramount:
         http://sametmax.com/lencoding-en-python-une-bonne-fois-pour-toute/
@@ -27,20 +26,19 @@ class ReversoDictionary:
         """
         self.base_url = 'http://dictionary.reverso.net/{lang1}-{lang2}/'
         self.hdr = {'User-Agent':'Mozilla/5.0'}
-        self.lang_dict = {'fr': 'francais',
-                          'it': 'italien',
-                          'ita': 'italien',
-                          'def': 'definition',
-                          'esp': 'espagnol',
-                          'es': 'espagnol',
-                          'eng': 'anglais',
+        self.lang_dict = {'fr':'francais', \
+                          'it': 'italien', \
+                          'ita': 'italien', \
+                          'def': 'definition', \
+                          'esp': 'espagnol', \
+                          'es': 'espagnol', \
+                          'eng': 'anglais', \
                           'ang': 'anglais'}
         self.all_lang = list(set(self.lang_dict.values()) | set(self.lang_dict.keys()))
     
     def set_up_translation_type(self, lang1, lang2):
         """
-        Method to set up the operation to be performed. if 'definition' is used as a second parameter it goes and fetch
-        french definition (definitions in other languages not available from website)
+        Method to set up the operation to be performed. if 'definition' is used as a second parameter it goes and fetch french definition (other definition not available from website) 
         
         Args:
             lang1 (str): language to translate from
@@ -53,12 +51,10 @@ class ReversoDictionary:
         """
         # initial checks
         assert all([lang.lower() in self.all_lang for lang in [lang1, lang2]]), \
-            "languages must be in {}, {} and {} were passed".format(self.all_lang, lang1, lang2)
+                   "languages must be in {}, {} and {} were passed".format(self.all_lang, lang1, lang2)
         # replace entries to something accepted by website
-        if lang1.lower() in self.lang_dict.keys():
-            lang1 = self.lang_dict[lang1.lower()]
-        if lang2.lower() in self.lang_dict.keys():
-            lang2 = self.lang_dict[lang2.lower()]
+        if lang1.lower() in self.lang_dict.keys(): lang1 = self.lang_dict[lang1.lower()]
+        if lang2.lower() in self.lang_dict.keys(): lang2 = self.lang_dict[lang2.lower()]
         self.lang1 = lang1
         self.lang2 = lang2
         # modify url accordingly
@@ -126,65 +122,54 @@ class ReversoDictionary:
                         # green means it's context
                         if elem['style'] == 'color:#008000;':
                             df.loc[idx, 'contexte'] = content
-                            if verbose:
-                                print('assigned to context based on style')
+                            if verbose: print('assigned to context based on style')
                             continue
                         # light grey is context too
                         if elem['style'] == 'color:#808080;':
                             df.loc[idx, 'contexte'] = content
-                            if verbose:
-                                print('assigned to context based on style')
+                            if verbose: print('assigned to context based on style')
                             continue
                         # blue it's the word in original language
                         elif elem['style'] == 'color:#0000ff;': 
                             if not is_defined_orig_word:
                                 df.loc[idx, lang1] = content
                                 is_defined_orig_word =True
-                                if verbose:
-                                    print('writing orig word based on style')
+                                if verbose: print('writing orig word based on style')
                                 continue
-                            if verbose:
-                                print('skipped orig word based on style')
+                            if verbose: print('skipped orig word based on style')
                             continue
                         # red for category
                         elif elem['style'] == 'color:#B50000;':
                             df.loc[idx, 'cat'] = content
-                            if verbose:
-                                print('assigned to category based on style')
+                            if verbose: print('assigned to category based on style')
                             continue
                         # white on black background for numbers
                         elif elem['style'] == 'color:#ffffff;':
-                            if verbose:
-                                print('skipped based on style')
+                            if verbose: print('skipped based on style')
                             continue
                     # title if color not there, if there is a title it's a category, unless... it's context
                     if 'title' not in elem.attrs:
                         if not is_defined_orig_word:
                             df.loc[idx, lang1] = content
                             is_defined_orig_word = True
-                            if verbose:
-                                print('writing orig word based on title')
+                            if verbose: print('writing orig word based on title')
                         continue
                     else:
                         # catch context - contains square bracket
                         if "[" in content:
                             df.loc[idx, 'contexte'] = content
-                            if verbose:
-                                print('assigned to context based on title + contains [')
+                            if verbose: print('assigned to context based on title + contains [')
                             continue
                         df.loc[idx, 'cat'] = content
-                        if verbose:
-                            print('assigned to category based on title')
+                        if verbose: print('assigned to category based on title')
                         continue
                 else:
                     # skipping terminaisons
                     if elem['direction'] == 'targettargettargettargettargettarget':
-                        if verbose:
-                            print('skipping terminaison based on direction')
+                        if verbose: print('skipping terminaison based on direction')
                         continue
                     df.loc[idx, lang2] = content
-                    if verbose:
-                        print('idx +1 target in direction')
+                    if verbose: print('idx +1 target in direction')
                     is_defined_orig_word = False
                     idx += 1
                     
@@ -206,7 +191,7 @@ class ReversoDictionary:
             content_df (pd.DataFrame): frame with content organized
         """
         # some normalization, lower case, stripping, replacing spaces with '+'
-        mot = mot.lower().strip().replace(" ", "+")
+        mot = mot.lower().strip().replace(" ","+")
         # make request to website
         word_url = self.url + mot
         res = requests.get(self.url + mot, headers = self.hdr)  
@@ -228,10 +213,9 @@ class ReversoDictionary:
         # structure html elements into a frame
         content_df = self._parse_html_elements(html_elems, verbose=False, ffill=False)
         return word_url, html_display, html_elems, content_df
-
-
+    
 if __name__ == "__main__":
-    app = ReversoDictionary()
+    app = rev.ReversoDictionary()
     app.set_up_translation_type('fr', 'def')
     mot = 'croquant'
     word_url, html_display, html_elems, content_df = app.translate_or_define(mot, target=False)

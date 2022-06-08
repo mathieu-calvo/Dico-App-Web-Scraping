@@ -15,37 +15,9 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">Best-README-Template</h3>
-
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</div>
 
 
 
@@ -66,10 +38,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
@@ -80,73 +49,67 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+There are many great resources available online or on your mobile to learn languages, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create an application that let me save **relevant definitions and translations**, and allow me to practice effectively  -- I think this is it.
 
 Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+* Vocabulary is an essential part of learning a language
+* A robust vocabulary improves all areas of communication — listening, speaking, reading and writing
+* A larger vocabulary can be a stepping stone to higher levels of language fluency
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+Of course, no application will serve all people since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this application! Hope you enjoy it as much as I do!
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+Major frameworks that I built the project with:
+* [Dash](https://plotly.com/dash/)
+* [Heroku](https://www.heroku.com/)
+* [Reverso](https://dictionary.reverso.net/)
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Here is some instructions on how to set up the project locally.
+Get a local copy up and running and follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+You'll need to have Python installed on your machine.
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/mathieu-calvo/Dico-App-Web-Scraping.git
    ```
-3. Install NPM packages
+2. Create and activate a virtual environment (example of how I do it, could be done differently)
    ```sh
-   npm install
+   python -m venv venv 
+   
+   cd \venv\Scripts>
+   
+   activate
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
+3. Install all dependencies into your virtual environment (I use pip)
+   ```sh
+   pip install -r requirements.txt
    ```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+4. Launch the app locally
+   ```sh
+   python index.py
+   ```
+5. Go to URL indicated to see the app launched locally on your browser
+   ```sh
+   Dash is running on http://127.0.0.1:8050/
+     * Serving Flask app "app" (lazy loading)
+     * Environment: production
+       WARNING: This is a development server. Do not use it in a production deployment.
+       Use a production WSGI server instead.
+     * Debug mode: on
+   ```
 
 
 
@@ -163,52 +126,27 @@ Contributions are what make the open source community such an amazing place to b
 
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - Mathieu Calvo
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/mathieu-calvo/Dico-App-Web-Scraping](https://github.com/mathieu-calvo/Dico-App-Web-Scraping)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* Chris Bishop “Pattern Recognition and Machine Learning”, Springer, 2006 (main textbook)
-* Tom Mitchell, “Machine Learning”, McGraw Hill, 1997
-* Kevin Murphy, “Machine Learning: A Probabilistic Perspective”, MIT Press, 2012 (advanced)
-* Micheal Bowles, "Machine learning in Python"
-* [Kaggle Datasets](https://www.kaggle.com/datasets)
-* [Towards DS Datasets](https://towardsdatascience.com/all-the-datasets-you-need-to-practice-data-science-skills-and-make-a-great-portfolio-857a348883b5)
-* [Dataquest Datasets](https://www.dataquest.io/blog/free-datasets-for-projects/)
-* [First Apache Spark ML model](https://towardsdatascience.com/your-first-apache-spark-ml-model-d2bb82b599dd)
-* [Distributed Data Processing with Apache Spark](https://medium.com/datadriveninvestor/distributed-data-processing-with-apache-spark-2a5e473b0cb1)
-* [Best README template](https://github.com/othneildrew/Best-README-Template/blob/master/README.md)
-* [Bayesian vs Frequentist video](https://www.youtube.com/watch?v=meivbbfHmK0)
-* [Frequentism and Bayesianism video](https://www.youtube.com/watch?v=KhAUfqhLakw)
-
+* [Heroku for Sharing Public Dash apps for Free](https://dash.plotly.com/deployment)
+* [Getting started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python)
+* [From Prototype to Cloud: A Python Recipe Converter](https://www.justinmklam.com/posts/2018/04/python-flask-heroku-tutorial/?c=7013A000000txcVQAQ&utm_campaign=Onboarding-2.0-Deploy-1.1-Python&utm_medium=email&utm_source=nurture&utm_content=community&utm_term=flask-tutorial-recipe-converter)
+* [Deploying Multi Page App to Heroku](https://community.plotly.com/t/deploying-multi-page-app-to-heroku-not-deploying-as-set-up/7877/4)
+* [README Template](https://github.com/othneildrew/Best-README-Template)
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
