@@ -36,6 +36,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#herokudeploy">Heroku Deployment</a></li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -111,8 +112,27 @@ You'll need to have Python installed on your machine.
      * Debug mode: on
    ```
 
+### Heroku Deployment
 
+Heroku can be quite confusing at first as it stores its own codebase for builds and deployments, and it not necessarily match what you have on Git, hence the confusion. 
 
+If you like to keep your latest code in Git like I do, remember to always do the following:
+
+1.
+    ```sh
+    git push heroku origin/main:main
+    ```
+2.
+    ```sh
+    heroku ps:scale web=1
+    ```
+3.
+    ```sh
+    heroku open
+    ```
+   
+You may be asked to do ```heroku login``` first
+   
 <!-- CONTRIBUTING -->
 ## Contributing
 
