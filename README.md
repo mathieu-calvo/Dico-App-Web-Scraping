@@ -49,14 +49,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-There are many great resources available online or on your mobile to learn languages, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create an application that let me save **relevant definitions and translations**, and allow me to practice effectively  -- I think this is it.
+There are many great resources available online or on your mobile to learn languages, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create an application that let me save **relevant definitions and translations**, and allow me to **practice effectively** by focusing on where improvement is needed  -- I think this is it.
 
 Here's why:
 * Vocabulary is an essential part of learning a language
 * A robust vocabulary improves all areas of communication — listening, speaking, reading and writing
 * A larger vocabulary can be a stepping stone to higher levels of language fluency
 
-Of course, no application will serve all people since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this application! Hope you enjoy it as much as I do!
+Of course, no application will serve all people since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people who have contributed to expanding this application! Hope you enjoy it as much as I do!
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
@@ -141,6 +141,7 @@ Project Link: [https://github.com/mathieu-calvo/Dico-App-Web-Scraping](https://g
 * [Getting started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python)
 * [From Prototype to Cloud: A Python Recipe Converter](https://www.justinmklam.com/posts/2018/04/python-flask-heroku-tutorial/?c=7013A000000txcVQAQ&utm_campaign=Onboarding-2.0-Deploy-1.1-Python&utm_medium=email&utm_source=nurture&utm_content=community&utm_term=flask-tutorial-recipe-converter)
 * [Deploying Multi Page App to Heroku](https://community.plotly.com/t/deploying-multi-page-app-to-heroku-not-deploying-as-set-up/7877/4)
+* [Set up automatic deploys from Git to Heroku](https://devcenter.heroku.com/articles/github-integration#automatic-deploys)
 * [README Template](https://github.com/othneildrew/Best-README-Template)
 
 
@@ -148,5 +149,5 @@ Project Link: [https://github.com/mathieu-calvo/Dico-App-Web-Scraping](https://g
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://www.linkedin.com/in/mathieu-calvo-b72758a3
 [product-screenshot]: images/screenshot.png
