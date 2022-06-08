@@ -1,3 +1,4 @@
+import base64
 
 import dash_core_components as dcc
 import dash_html_components as html
@@ -18,21 +19,23 @@ app.layout = html.Div(
                 html.Span(
                     className="app-title",
                     children=[
-                        dcc.Markdown("**Dictionary App**"),
+                        dcc.Markdown("**Dictionary App**", style={'color': 'white', "margin-top": "10px"}),
                         html.Span(
                             id="subtitle",
                             children=dcc.Markdown("&nbsp using Dash and Heroku"),
-                            style={"font-size": "1.8rem", "margin-top": "15px"},
+                            style={"font-size": "1.8rem", "margin-top": "18px", 'color': 'white'},
                         ),
                     ],
                 ),
-                html.Img(src=app.get_asset_url("logo_min.png")),
+                html.Img(src=app.get_asset_url("git_logo.png")),
                 html.A(
-                    id="learn_more",
-                    children=html.Button("Learn More"),
-                    href="https://plot.ly/dash/",
-                ),
+                    id="github_link",
+                    children="View on Github",
+                    href="https://github.com/mathieu-calvo/Dico-App-Web-Scraping/",
+                    style={'color': 'white', 'border': 'solid 1px white', "margin-left": "8px"}
+                )
             ],
+            style={'background': '#0C4142', 'color': 'white'},
         ),
         html.Div(
             id="tabs",
@@ -67,7 +70,6 @@ app.layout = html.Div(
             href="https://fonts.googleapis.com/css?family=Ubuntu", rel="stylesheet"
         ),
     ],
-    className="row",
     style={"margin": "0%"},
 )
 
@@ -93,6 +95,7 @@ def display_page(pathname):
             href="/dash-dictionary-app/Explore",
         )
         return explore.layout, tabs, tabs
+
     tabs[1] = dcc.Link(
         dcc.Markdown("**&#9632 Exploit**"), href="/dash-dictionary-app/Exploit"
     )

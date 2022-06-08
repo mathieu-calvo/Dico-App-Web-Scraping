@@ -14,7 +14,7 @@ body {
 
 /* All classes I attribute to my objects */
 
-/*
+
 .row {
   align-items: center;
 }
@@ -98,9 +98,9 @@ body {
   font-size: 1.25rem;
   text-align: center;
 }
-*/
 
-/*
+
+
 table {
   border: 1px;
   font-size: 1rem;
@@ -131,12 +131,12 @@ table {
 .indicator_value p {
   margin: 1rem 0;
 }
-*/
+
 
 /* Remove scrollbar space */
 /* Optional: just make scrollbar invisible */
 
-/*
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
@@ -150,9 +150,9 @@ table {
   .Select-value-label {
   color: #848484;
 }
-*/
 
-/*
+
+
 input {
   padding: 0.5rem 0;
   border-radius: 5px;
@@ -180,7 +180,7 @@ th {
 .indicator_value {
   color: #333333;
 }
-*/
+
 
 /* Object specific attributes */
 #learn_more {
@@ -201,7 +201,7 @@ th {
   margin-right: 2%;
 }
 
-/*
+
 #menu {
   display: block;
   border: none;
@@ -212,11 +212,11 @@ th {
   margin-block-start: 0;
   margin-block-end: 0;
 }
-*/
+
 
 /* Layouts for different screen sizes */
 
-/*
+
 @media (max-width: 350px) {
   .app-title {
     margin-left: 0 !important;
@@ -307,7 +307,7 @@ th {
     flex-direction: row;
   }
   .tabs > a {
-    width: 100%;
+    width: 30%;
   }
   .tabs > a:first-child {
     border-right: 1px solid lightgrey;
@@ -315,4 +315,3 @@ th {
   .tabs > a:last-child {
     border-left: 1px solid lightgrey;
   }
-*/

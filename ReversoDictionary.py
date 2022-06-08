@@ -6,7 +6,6 @@ import pandas as pd
 import requests, bs4, unicodedata
 from IPython.display import HTML
 
-
 class ReversoDictionary:
     
     def __init__(self):
