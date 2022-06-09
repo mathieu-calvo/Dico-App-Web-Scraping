@@ -66,9 +66,17 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 Major frameworks that I built the project with:
 * [Dash](https://plotly.com/dash/)
 * [Heroku](https://www.heroku.com/)
+
+It's built on top of the following public website:
 * [Reverso](https://dictionary.reverso.net/)
 
+Using webscraping with following open source library:
+* [Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/)
 
+When dealing with text, understanding encoding is paramount:
+* [L'encoding en python une bonne fois pour toute](http://sametmax.com/lencoding-en-python-une-bonne-fois-pour-toute/)
+* [What does unicodedate normalize do in Python](https://stackoverflow.com/questions/51710082/what-does-unicodedata-normalize-do-in-python)
+* [Python removing xa0 from String](https://stackoverflow.com/questions/10993612/python-removing-xa0-from-string)
 
 <!-- GETTING STARTED -->
 ## Getting Started
