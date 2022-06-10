@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 
 app = dash.Dash(
     __name__,
-    external_stylesheets=[dbc.themes.BOOTSTRAP],
+    external_stylesheets=[dbc.themes.GRID],
     meta_tags=[{"name": "viewport", "content": "width=device-width"}]
 )
 
