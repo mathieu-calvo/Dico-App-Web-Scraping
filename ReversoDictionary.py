@@ -6,6 +6,7 @@ import pandas as pd
 import requests, bs4, unicodedata
 from IPython.display import HTML
 
+
 class ReversoDictionary:
     
     def __init__(self):
@@ -26,12 +27,14 @@ class ReversoDictionary:
         """
         self.base_url = 'http://dictionary.reverso.net/{lang1}-{lang2}/'
         self.hdr = {'User-Agent':'Mozilla/5.0'}
-        self.lang_dict = {'fr': 'francais',
+        self.lang_dict = {'fra': 'francais',
+                          'fr': 'francais',
                           'it': 'italien',
                           'ita': 'italien',
                           'def': 'definition',
                           'esp': 'espagnol',
                           'es': 'espagnol',
+                          'spa': 'espagnol',
                           'eng': 'anglais',
                           'ang': 'anglais'}
         self.all_lang = list(set(self.lang_dict.values()) | set(self.lang_dict.keys()))
@@ -58,6 +61,7 @@ class ReversoDictionary:
             lang1 = self.lang_dict[lang1.lower()]
         if lang2.lower() in self.lang_dict.keys():
             lang2 = self.lang_dict[lang2.lower()]
+        # normalized languages
         self.lang1 = lang1
         self.lang2 = lang2
         # modify url accordingly
@@ -226,7 +230,7 @@ class ReversoDictionary:
         html_display = HTML(elems_norm)
         # structure html elements into a frame
         content_df = self._parse_html_elements(html_elems, verbose=False, ffill=False)
-        return word_url, html_display, html_elems, content_df
+        return word_url, html_display, html_elems, content_df, elems_norm
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 import base64
 
 import dash_core_components as dcc
-import dash_html_components as html
+from dash import html
 from dash.dependencies import Input, Output, State
 
 from app import app
@@ -86,20 +86,20 @@ app.layout = html.Div(
 )
 def display_page(pathname):
     tabs = [
-        dcc.Link("Explore", href="/dash-dictionary-app/Explore"),
-        dcc.Link("Exploit", href="/dash-dictionary-app/Exploit"),
+        dcc.Link("Search", href="/dash-dictionary-app/Explore", style={"font-size": "2rem"}),
+        dcc.Link("Play", href="/dash-dictionary-app/Exploit", style={"font-size": "2rem"}),
     ]
-    if pathname == "/dash-dictionary-app/Explore":
-        tabs[0] = dcc.Link(
-            dcc.Markdown("**&#9632 Explore**"),
-            href="/dash-dictionary-app/Explore",
+    if pathname == "/dash-dictionary-app/Exploit":
+        tabs[1] = dcc.Link(
+            dcc.Markdown("**&#9632 Play**", style={"font-size": "2rem"}), href="/dash-dictionary-app/Exploit"
         )
-        return explore.layout, tabs, tabs
+        return exploit.layout, tabs, tabs
 
-    tabs[1] = dcc.Link(
-        dcc.Markdown("**&#9632 Exploit**"), href="/dash-dictionary-app/Exploit"
+    tabs[0] = dcc.Link(
+        dcc.Markdown("**&#9632 Search**", style={"font-size": "2rem"}),
+        href="/dash-dictionary-app/Explore",
     )
-    return exploit.layout, tabs, tabs
+    return explore.layout, tabs, tabs
 
 
 @app.callback(
