@@ -157,7 +157,7 @@ layout = [
 def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9):
     """ Show definition or translation to user whenever they input a new word or change the type of action """
     # first the content from dictionary
-    word_url, html_display, html_elems, content_df, elems_norm = dico.translate_or_define(input_word, target=False)
+    word_url, html_elems, content_df, elems_norm = dico.translate_or_define(input_word, target=False)
     # table in dash format
     data_table = dash_table.DataTable(
         data=content_df.to_dict('records'),
