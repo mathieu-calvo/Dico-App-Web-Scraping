@@ -3,8 +3,9 @@
 
 # site packages
 import pandas as pd
-import requests, bs4, unicodedata
-from IPython.display import HTML
+import requests
+import bs4
+import unicodedata
 
 
 class ReversoDictionary:
@@ -26,7 +27,7 @@ class ReversoDictionary:
             all_lang (set): all variations accepted as input 
         """
         self.base_url = 'http://dictionary.reverso.net/{lang1}-{lang2}/'
-        self.hdr = {'User-Agent':'Mozilla/5.0'}
+        self.hdr = {'User-Agent': 'Mozilla/5.0'}
         self.lang_dict = {'fra': 'francais',
                           'fr': 'francais',
                           'it': 'italien',
@@ -204,9 +205,9 @@ class ReversoDictionary:
         
         Returns:
             word_url (str): URL queried, for debugging purposes
-            html_display (IPython.core.display.HTML): output of query in html format
             html_elems (bs4.element.ResultSet): list containing html elements
             content_df (pd.DataFrame): frame with content organized
+            elems_norm (str): raw html in str format
         """
         # some normalization, lower case, stripping, replacing spaces with '+'
         mot = mot.lower().strip().replace(" ", "+")
@@ -227,14 +228,13 @@ class ReversoDictionary:
         # also take care of encoding normalization
         elems_norm = str(html_elems).replace("[", "").replace("]", "").replace(",", "")
         elems_norm = unicodedata.normalize('NFKD', elems_norm)
-        html_display = HTML(elems_norm)
         # structure html elements into a frame
         content_df = self._parse_html_elements(html_elems, verbose=False, ffill=False)
-        return word_url, html_display, html_elems, content_df, elems_norm
+        return word_url, html_elems, content_df, elems_norm
 
 
 if __name__ == "__main__":
     app = ReversoDictionary()
     app.set_up_translation_type('fr', 'def')
     mot = 'croquant'
-    word_url, html_display, html_elems, content_df = app.translate_or_define(mot, target=False)
+    word_url, html_elems, content_df, elems_norm = app.translate_or_define(mot, target=False)
