@@ -15,7 +15,6 @@ unclicked_style = {'border': 'None', 'background-color': '#f9f9f9'}
 
 # create dictionary and initiate it
 dico = ReversoDictionary()
-dico.set_up_translation_type('fr', 'def')
 
 
 layout = [
@@ -153,8 +152,20 @@ layout = [
 )
 def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9):
     """ Show definition or translation to user whenever they input a new word or change the type of action """
-    # first the content from dictionary
-    word_url, html_elems, content_df, elems_norm = dico.translate_or_define(input_word, target=False)
+
+    # first infer languages from style of buttons
+    lang1_idx = [b['border'] != "None" for b in [s1, s2, s3, s4]].index(True)
+    lang2_idx = [b['border'] != "None" for b in [s5, s6, s7, s8, s9]].index(True)
+    lang1 = ['francais', 'anglais', 'italien', 'espagnol'][lang1_idx]
+    lang2 = ['definition', 'francais', 'anglais', 'italien', 'espagnol'][lang2_idx]
+
+    # if source and destination are the same change to definition
+    if lang1 == lang2:
+        lang2 = 'definition'
+
+    # get the content from dictionary
+    word_url, html_elems, content_df, elems_norm = dico.get_translation_or_definition(input_word, lang1, lang2)
+
     # table in dash format
     data_table = dash_table.DataTable(
         data=content_df.to_dict('records'),
@@ -180,25 +191,25 @@ def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9):
     [Output(f'{f}_flag_to', 'style') for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']],
     [Input(f'{f}_flag_from', 'n_clicks') for f in ['francais', 'anglais', 'italien', 'espagnol']] +
     [Input(f'{f}_flag_to', 'n_clicks') for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']],
+    [State(f'{f}_flag_from', 'style') for f in ['francais', 'anglais', 'italien', 'espagnol']] +
+    [State(f'{f}_flag_to', 'style') for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']],
     prevent_initial_call=True,
 )
-def update_dico_type(n1, n2, n3, n4, n5, n6, n7, n8, n9):
-    """ Change type of dictionary based on flags user clicked on, change style of flags accordingly """
+def update_buttons_style(n1, n2, n3, n4, n5, n6, n7, n8, n9, s1, s2, s3, s4, s5, s6, s7, s8, s9):
+    """ Change buttons' style based on flags user clicked on """
 
     # work out what button is triggering the callback
     trigger = ctx.triggered[0]['prop_id']
     trigger_type = trigger.split('.')[0].split('_')[-1]
     triggering_flag = trigger.split('.')[0].split('_')[0]
 
+    # get current destination and source - infer from style of buttons
+    lang1_idx = [b['border'] != "None" for b in [s1, s2, s3, s4]].index(True)
+    lang2_idx = [b['border'] != "None" for b in [s5, s6, s7, s8, s9]].index(True)
+    from_flag = ['francais', 'anglais', 'italien', 'espagnol'][lang1_idx]
+    to_flag = ['definition', 'francais', 'anglais', 'italien', 'espagnol'][lang2_idx]
+
     if trigger_type == 'from':
-
-        # get current destination
-        to_flag = dico.lang2
-
-        # print(f"TYPE 1: from {triggering_flag} to {to_flag}")
-
-        # change the dictionary accordingly
-        dico.set_up_translation_type(triggering_flag, to_flag)
 
         # style buttons accordingly
         return [clicked_style if f == triggering_flag else unclicked_style
@@ -207,14 +218,6 @@ def update_dico_type(n1, n2, n3, n4, n5, n6, n7, n8, n9):
                 for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']]
 
     else:
-
-        # get current source
-        from_flag = dico.lang1
-
-        # print(f"TYPE 2: from {from_flag} to {triggering_flag}")
-
-        # change the dictionary accordingly
-        dico.set_up_translation_type(from_flag, triggering_flag)
 
         # style buttons accordingly
         return [clicked_style if f == from_flag else unclicked_style
