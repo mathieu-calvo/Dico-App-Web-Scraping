@@ -22,12 +22,11 @@ layout = [
     dbc.Container([
         dbc.Row([
             dbc.Col([
-                html.Img(src=app.get_asset_url("language_icon.png"),
-                         style={'height': '10%', 'width': '5%', "margin-right": "10px"}),
+                html.Img(src=app.get_asset_url("language_icon.png"), className='icon'),
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("fra_flag.png"),
-                        style={'height': '50px', "margin-right": "10px"},
+                        className='flag',
                     )
                 ],
                     id='francais_flag_from',
@@ -36,7 +35,7 @@ layout = [
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("eng_flag.png"),
-                        style={'height': '50px', "margin-right": "10px"},
+                        className='flag',
                     ),
                 ],
                     id='anglais_flag_from',
@@ -45,7 +44,7 @@ layout = [
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("ita_flag.png"),
-                        style={'height': '50px', "margin-right": "10px"},
+                        className='flag',
                     ),
                 ],
                     id='italien_flag_from',
@@ -54,29 +53,27 @@ layout = [
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("spa_flag.png"),
-                        style={'height': '50px', "margin-right": "10px"},
+                        className='flag',
                     ),
                 ],
                     id='espagnol_flag_from',
                     style={'border': 'None', 'background-color': '#f9f9f9'},
                     className='equalButton'),
-            ]),
+            ], xs=12, md=4, align='center'),
             dbc.Col([
-                html.Img(src=app.get_asset_url("search_icon.png"),
-                         style={'height': '4%', 'width': '4%', "margin-right": "10px"}),
+                html.Img(src=app.get_asset_url("search_icon.png"), className='icon'),
                 dcc.Input(id="input_word",
                           type="text",
                           placeholder="Type a word here",
                           debounce=True,
                           style={"font-size": "1.4rem"})
-            ]),
+            ], xs=12, md=4,  align='center'),
             dbc.Col([
-                html.Img(src=app.get_asset_url("destination_icon.png"),
-                         style={'height': '10%', 'width': '5%', "margin-right": "10px"}),
+                html.Img(src=app.get_asset_url("destination_icon.png"), className='icon'),
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("definition_icon.png"),
-                        style={'height': '50px', "margin-right": "10px"},
+                        className='flag',
                     )
                     ],
                     id='definition_flag_to',
@@ -85,7 +82,7 @@ layout = [
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("fra_flag.png"),
-                        style={'height': '50px', "margin-right": "10px"},
+                        className='flag',
                     )
                     ],
                     id='francais_flag_to',
@@ -94,7 +91,7 @@ layout = [
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("eng_flag.png"),
-                        style={'height': '50px', "margin-right": "10px"},
+                        className='flag',
                     ),
                     ],
                     id='anglais_flag_to',
@@ -103,7 +100,7 @@ layout = [
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("ita_flag.png"),
-                        style={'height': '50px', "margin-right": "10px"},
+                        className='flag',
                     ),
                     ],
                     id='italien_flag_to',
@@ -112,13 +109,13 @@ layout = [
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("spa_flag.png"),
-                        style={'height': '50px', "margin-right": "10px"},
+                        className='flag',
                     ),
                     ],
                     id='espagnol_flag_to',
                     style={'border': 'None', 'background-color': '#f9f9f9'},
                     className='equalButton')
-            ]),
+            ], xs=12, md=4, align='center'),
         ], justify='center', align='center', style={"margin-top": "20px", "margin-bottom": "20px"}),
         dbc.Row([
             dbc.Col([
@@ -135,10 +132,10 @@ layout = [
                        style={'color': 'blue', "font-size": "0.8rem", "text-decoration": "underline"}
                     ),
                 ], style={"margin-left": "10px"}),
-            ], width=6, className="pretty_container"),
+            ], xs=12, md=6, className="pretty_container"),
             dbc.Col([
                 html.Div([], id='table_output'),
-            ], width=6, className="pretty_container"),
+            ], xs=12, md=6, className="pretty_container"),
         ], align='start'),
     ], fluid=True),
 ]

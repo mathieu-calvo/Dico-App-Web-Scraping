@@ -22,12 +22,12 @@ app.layout = html.Div(
                         dcc.Markdown("**Dictionary App**", style={'color': 'white', "margin-top": "10px"}),
                     ],
                 ),
-                html.Img(src=app.get_asset_url("git_logo.png")),
+                html.Img(src=app.get_asset_url("git_logo.png"), className='icon'),
                 html.A(
                     id="github_link",
                     children="View on Github",
                     href="https://github.com/mathieu-calvo/Dico-App-Web-Scraping/",
-                    style={'color': 'white', 'border': 'solid 1px white', "margin-left": "8px"}
+                    className='button',
                 )
             ],
             style={'background': '#0C4142', 'color': 'white'},
@@ -43,7 +43,7 @@ app.layout = html.Div(
         html.Div(
             id="mobile_tabs",
             className="row tabs",
-            style={"display": "none"},
+            style={"display": "none", "background-color": "white"},
             children=[
                 dcc.Link("Explore", href="/"),
                 dcc.Link("Exploit", href="/"),
@@ -81,17 +81,17 @@ app.layout = html.Div(
 )
 def display_page(pathname):
     tabs = [
-        dcc.Link("Search", href="/dash-dictionary-app/Explore", style={"font-size": "2rem"}),
-        dcc.Link("Play", href="/dash-dictionary-app/Exploit", style={"font-size": "2rem"}),
+        dcc.Link("Search", href="/dash-dictionary-app/Explore"),
+        dcc.Link("Play", href="/dash-dictionary-app/Exploit"),
     ]
     if pathname == "/dash-dictionary-app/Exploit":
         tabs[1] = dcc.Link(
-            dcc.Markdown("**&#9632 Play**", style={"font-size": "2rem"}), href="/dash-dictionary-app/Exploit"
+            dcc.Markdown("**&#9632 Play**"), href="/dash-dictionary-app/Exploit"
         )
         return exploit.layout, tabs, tabs
 
     tabs[0] = dcc.Link(
-        dcc.Markdown("**&#9632 Search**", style={"font-size": "2rem"}),
+        dcc.Markdown("**&#9632 Search**"),
         href="/dash-dictionary-app/Explore",
     )
     return explore.layout, tabs, tabs
