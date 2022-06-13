@@ -2,6 +2,7 @@
 import pandas as pd
 from dash import html, dash_table, callback_context as ctx
 from dash.dependencies import Input, Output, State
+from dash.exceptions import PreventUpdate
 import dash_core_components as dcc
 import dash_bootstrap_components as dbc
 import dash_dangerously_set_inner_html
@@ -152,6 +153,8 @@ layout = [
 )
 def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9):
     """ Show definition or translation to user whenever they input a new word or change the type of action """
+    if input_word is None:
+        raise PreventUpdate
 
     # first infer languages from style of buttons
     lang1_idx = [b['border'] != "None" for b in [s1, s2, s3, s4]].index(True)
