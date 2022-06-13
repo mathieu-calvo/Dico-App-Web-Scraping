@@ -14,7 +14,7 @@ body {
 
 /* All classes I attribute to my objects */
 
-
+}
 .row {
   align-items: center;
 }
@@ -24,6 +24,8 @@ body {
   background-color: white;
   color: #333333;
   padding-right: 3%;
+  vertical-align: middle;
+  align-items: center;
 }
 
 .app-title {
@@ -36,8 +38,6 @@ body {
   flex: 1;
   flex-direction: row;
 }
-
-
 
 .subtitle {
   text-align: center;
@@ -54,26 +54,15 @@ body {
 }
 
 .button {
-  background-color: #3a7cef;
+  margin-left: 8px;
   color: white;
-  display: block;
-  border-radius: 5px;
-  border: none;
+  display: inline;
+  border: solid 1px white;
   letter-spacing: 0.1rem;
-  box-shadow: 4px 4px 4px lightgrey;
-  transition: box-shadow 0.5s;
-  width: 25%;
-  padding: 0.75rem;
+  height: 50%;
   text-align: center;
-  margin-left: 5%;
 }
 
-.tallButton{
-    padding:50px 10px 50px 10px;
-}
-.wideButton{
-    padding:10px 50px 10px 50px;
-}
 .equalButton{
     padding: 10x;
     margin: 0;
@@ -99,15 +88,16 @@ body {
   border-top: 1px solid lightgrey;
   display: none;
   flex-direction: column;
-  padding: 1rem 5%;
-  margin-bottom: 1rem;
+  padding: 0.5rem 2%;
+  margin-bottom: 0.5rem;
   background-color: white;
+  vertical-align: middle;
+  align-items: center;
 }
 
 .tabs > a {
   text-decoration: none;
   color: #333333;
-  font-size: 1.25rem;
   text-align: center;
 }
 
@@ -122,26 +112,6 @@ table {
 
 .table {
   overflow: scroll;
-}
-
-.indicators {
-  display: flex;
-  align-items: stretch;
-}
-
-.indicator {
-  flex: 1;
-  padding: 0.75rem 1.75rem;
-  text-align: center;
-}
-
-.indicator_value {
-  font-size: 2rem;
-  margin: 1rem 0;
-}
-
-.indicator_value p {
-  margin: 1rem 0;
 }
 
 
@@ -189,35 +159,14 @@ th {
   padding: 8px;
 }
 
-.indicator_value {
-  color: #333333;
-}
-
 
 /* Object specific attributes */
-#learn_more {
-  display: block;
-  width: 5%;
-  background-color: #3a7cef;
-  color: white;
-  display: block;
-  border-radius: 5px;
-  border: none;
-  letter-spacing: 0.1rem;
-  box-shadow: 4px 4px 4px lightgrey;
-  transition: box-shadow 0.5s;
-  width: 10%;
-  padding: 0.75rem;
-  text-align: center;
-  margin-left: 5%;
-  margin-right: 2%;
-}
-
 
 #menu {
   display: block;
   border: none;
   font-size: 2rem;
+  background-color: white;
 }
 
 #menu p {
@@ -230,12 +179,40 @@ th {
 
 
 @media (max-width: 350px) {
+  .flag {
+    height: 30px;
+    margin-right: 2px;
+  }
+  .icon {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+  }
+  .tabs {
+    font-size: 1rem;
+    flex-direction: row;
+    justify-content: space-around;
+  }
   .app-title {
     margin-left: 0 !important;
   }
 }
 
 @media (max-width: 450px) {
+  .flag {
+    height: 30px;
+    margin-right: 2px;
+  }
+  .icon {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+  }
+  .tabs {
+    font-size: 1rem;
+    flex-direction: row;
+    justify-content: space-around;
+  }
   .dropdown-styles {
     width: 28% !important;
     display: inline-block !important;
@@ -249,31 +226,14 @@ th {
     height: 25px !important;
     padding-left: 3% !important;
   }
-  .indicator_value {
-    font-size: 1.25rem !important;
-  }
-  .indicator {
-    padding: 0.5rem;
-  }
   .button {
-    width: 25% !important;
+    !important;
   }
 }
 
 
 
 @media (max-width: 900px) {
-  .indicator {
-    align-content: center;
-    justify-items: center;
-    text-align: center;
-  }
-  .indicator:first-child {
-    margin-right: 0;
-  }
-  .indicator:last-child {
-    margin-left: 0;
-  }
   .app-title {
     font-size: 2rem;
     padding-left: 20%;
@@ -284,7 +244,6 @@ th {
   }
   .button {
     margin: 2% auto;
-    width: 20%;
   }
   .dropdown-styles {
     width: 30%;
@@ -294,21 +253,24 @@ th {
     width: 44%;
     display: inline-block;
   }
-  .indicator_value {
-    font-size: 1.5rem;
-  }
 }
 
 
 
 @media (min-width: 900px) {
+  .flag {
+    height: 50px;
+    margin-right: 10px;
+  }
+  .icon {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+  }
   .header {
     flex-direction: row;
   }
   .subtitle {
-    display: block;
-  }
-  #learn_more {
     display: block;
   }
   #menu {
@@ -317,6 +279,7 @@ th {
   .tabs {
     display: flex;
     flex-direction: row;
+    font-size: 2rem;
   }
   .tabs > a {
     width: 30%;
