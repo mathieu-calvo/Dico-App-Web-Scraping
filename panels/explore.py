@@ -79,8 +79,8 @@ layout = [
                           type="text",
                           placeholder="Type a word here",
                           debounce=True,
-                          style={"font-size": "1.4rem"})
-            ], xs=12, md=4,  align='center'),
+                          className="search_bar")
+            ], xs=12, md=3,  align='center'),
             dbc.Col([
                 html.Img(src=app.get_asset_url("destination_icon.png"), className='icon'),
                 html.Button([
@@ -137,7 +137,7 @@ layout = [
                     id='portugais_flag_to',
                     style={'border': 'None', 'background-color': '#f9f9f9'},
                     className='equalButton'),
-            ], xs=12, md=4, align='center'),
+            ], xs=12, md=5, align='center'),
         ], justify='center', align='center', style={"margin-top": "20px", "margin-bottom": "20px"}),
         dbc.Row([
             dbc.Col([
