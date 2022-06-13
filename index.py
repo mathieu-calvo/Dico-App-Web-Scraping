@@ -20,11 +20,6 @@ app.layout = html.Div(
                     className="app-title",
                     children=[
                         dcc.Markdown("**Dictionary App**", style={'color': 'white', "margin-top": "10px"}),
-                        html.Span(
-                            id="subtitle",
-                            children=dcc.Markdown("&nbsp using Dash and Heroku"),
-                            style={"font-size": "1.8rem", "margin-top": "18px", 'color': 'white'},
-                        ),
                     ],
                 ),
                 html.Img(src=app.get_asset_url("git_logo.png")),
