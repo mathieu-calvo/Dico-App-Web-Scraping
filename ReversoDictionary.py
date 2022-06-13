@@ -32,16 +32,12 @@ class ReversoDictionary:
         if hdr is None:
             hdr = {'User-Agent': 'Mozilla/5.0'}
         if lang_dict is None:
-            lang_dict = {'fra': 'francais',
-                         'fr': 'francais',
-                         'it': 'italien',
-                         'ita': 'italien',
+            lang_dict = {'fra': 'francais', 'fr': 'francais',
+                         'it': 'italien', 'ita': 'italien',
                          'def': 'definition',
-                         'esp': 'espagnol',
-                         'es': 'espagnol',
-                         'spa': 'espagnol',
-                         'eng': 'anglais',
-                         'ang': 'anglais'}
+                         'esp': 'espagnol', 'es': 'espagnol', 'spa': 'espagnol',
+                         'eng': 'anglais', 'ang': 'anglais',
+                         'por': 'portugais', 'port': 'portugais'}
         if all_lang is None:
             all_lang = list(set(lang_dict.values()) | set(lang_dict.keys()))
         # store in attributes

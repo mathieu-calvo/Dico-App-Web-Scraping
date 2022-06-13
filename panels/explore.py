@@ -14,6 +14,10 @@ from ReversoDictionary import ReversoDictionary
 clicked_style = {'border': 'solid 2px black', 'background-color': 'lightgreen'}
 unclicked_style = {'border': 'None', 'background-color': '#f9f9f9'}
 
+# list of countries as accepted by dictionary AND in order displayed through flags
+ordered_flags_from = ['francais', 'anglais', 'italien', 'espagnol', 'portugais']
+ordered_flags_to = ['definition', 'francais', 'anglais', 'italien', 'espagnol', 'portugais']
+
 # create dictionary and initiate it
 dico = ReversoDictionary()
 
@@ -57,6 +61,15 @@ layout = [
                     ),
                 ],
                     id='espagnol_flag_from',
+                    style={'border': 'None', 'background-color': '#f9f9f9'},
+                    className='equalButton'),
+                html.Button([
+                    html.Img(
+                        src=app.get_asset_url("por_flag.png"),
+                        className='flag',
+                    ),
+                ],
+                    id='portugais_flag_from',
                     style={'border': 'None', 'background-color': '#f9f9f9'},
                     className='equalButton'),
             ], xs=12, md=4, align='center'),
@@ -114,7 +127,16 @@ layout = [
                     ],
                     id='espagnol_flag_to',
                     style={'border': 'None', 'background-color': '#f9f9f9'},
-                    className='equalButton')
+                    className='equalButton'),
+                html.Button([
+                    html.Img(
+                        src=app.get_asset_url("por_flag.png"),
+                        className='flag',
+                    ),
+                ],
+                    id='portugais_flag_to',
+                    style={'border': 'None', 'background-color': '#f9f9f9'},
+                    className='equalButton'),
             ], xs=12, md=4, align='center'),
         ], justify='center', align='center', style={"margin-top": "20px", "margin-bottom": "20px"}),
         dbc.Row([
@@ -147,20 +169,20 @@ layout = [
      Output('url_source', 'href'),
      Output('table_output', 'children')],
     [Input('input_word', 'value')] +
-    [Input(f'{f}_flag_from', 'style') for f in ['francais', 'anglais', 'italien', 'espagnol']] +
-    [Input(f'{f}_flag_to', 'style') for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']],
+    [Input(f'{f}_flag_from', 'style') for f in ordered_flags_from] +
+    [Input(f'{f}_flag_to', 'style') for f in ordered_flags_to],
     prevent_initial_call=True,
 )
-def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9):
+def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11):
     """ Show definition or translation to user whenever they input a new word or change the type of action """
     if input_word is None:
         raise PreventUpdate
 
     # first infer languages from style of buttons
-    lang1_idx = [b['border'] != "None" for b in [s1, s2, s3, s4]].index(True)
-    lang2_idx = [b['border'] != "None" for b in [s5, s6, s7, s8, s9]].index(True)
-    lang1 = ['francais', 'anglais', 'italien', 'espagnol'][lang1_idx]
-    lang2 = ['definition', 'francais', 'anglais', 'italien', 'espagnol'][lang2_idx]
+    lang1_idx = [b['border'] != "None" for b in [s1, s2, s3, s4, s5]].index(True)
+    lang2_idx = [b['border'] != "None" for b in [s6, s7, s8, s9, s10, s11]].index(True)
+    lang1 = ordered_flags_from[lang1_idx]
+    lang2 = ordered_flags_to[lang2_idx]
 
     # if source and destination are the same change to definition
     if lang1 == lang2:
@@ -190,15 +212,15 @@ def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9):
 
 
 @app.callback(
-    [Output(f'{f}_flag_from', 'style') for f in ['francais', 'anglais', 'italien', 'espagnol']] +
-    [Output(f'{f}_flag_to', 'style') for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']],
-    [Input(f'{f}_flag_from', 'n_clicks') for f in ['francais', 'anglais', 'italien', 'espagnol']] +
-    [Input(f'{f}_flag_to', 'n_clicks') for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']],
-    [State(f'{f}_flag_from', 'style') for f in ['francais', 'anglais', 'italien', 'espagnol']] +
-    [State(f'{f}_flag_to', 'style') for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']],
+    [Output(f'{f}_flag_from', 'style') for f in ordered_flags_from] +
+    [Output(f'{f}_flag_to', 'style') for f in ordered_flags_to],
+    [Input(f'{f}_flag_from', 'n_clicks') for f in ordered_flags_from] +
+    [Input(f'{f}_flag_to', 'n_clicks') for f in ordered_flags_to],
+    [State(f'{f}_flag_from', 'style') for f in ordered_flags_from] +
+    [State(f'{f}_flag_to', 'style') for f in ordered_flags_to],
     prevent_initial_call=True,
 )
-def update_buttons_style(n1, n2, n3, n4, n5, n6, n7, n8, n9, s1, s2, s3, s4, s5, s6, s7, s8, s9):
+def update_buttons_style(n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11):
     """ Change buttons' style based on flags user clicked on """
 
     # work out what button is triggering the callback
@@ -207,23 +229,19 @@ def update_buttons_style(n1, n2, n3, n4, n5, n6, n7, n8, n9, s1, s2, s3, s4, s5,
     triggering_flag = trigger.split('.')[0].split('_')[0]
 
     # get current destination and source - infer from style of buttons
-    lang1_idx = [b['border'] != "None" for b in [s1, s2, s3, s4]].index(True)
-    lang2_idx = [b['border'] != "None" for b in [s5, s6, s7, s8, s9]].index(True)
-    from_flag = ['francais', 'anglais', 'italien', 'espagnol'][lang1_idx]
-    to_flag = ['definition', 'francais', 'anglais', 'italien', 'espagnol'][lang2_idx]
+    lang1_idx = [b['border'] != "None" for b in [s1, s2, s3, s4, s5]].index(True)
+    lang2_idx = [b['border'] != "None" for b in [s6, s7, s8, s9, s10, s11]].index(True)
+    from_flag = ordered_flags_from[lang1_idx]
+    to_flag = ordered_flags_to[lang2_idx]
 
     if trigger_type == 'from':
 
         # style buttons accordingly
-        return [clicked_style if f == triggering_flag else unclicked_style
-                for f in ['francais', 'anglais', 'italien', 'espagnol']] + \
-               [clicked_style if f == to_flag else unclicked_style
-                for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']]
+        return [clicked_style if f == triggering_flag else unclicked_style for f in ordered_flags_from] + \
+               [clicked_style if f == to_flag else unclicked_style for f in ordered_flags_to]
 
     else:
 
         # style buttons accordingly
-        return [clicked_style if f == from_flag else unclicked_style
-                for f in ['francais', 'anglais', 'italien', 'espagnol']] + \
-               [clicked_style if f == triggering_flag else unclicked_style
-                for f in ['definition', 'francais', 'anglais', 'italien', 'espagnol']]
+        return [clicked_style if f == from_flag else unclicked_style for f in ordered_flags_from] + \
+               [clicked_style if f == triggering_flag else unclicked_style for f in ordered_flags_to]
