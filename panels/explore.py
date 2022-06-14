@@ -143,7 +143,12 @@ layout = [
             dbc.Col([
                 html.Div(
                     [],
-                    id='html_output',
+                    id='html_output_box0',
+                    style={"font-size": "1.2rem", "margin-bottom": "30px"},
+                ),
+                html.Div(
+                    [],
+                    id='html_output_box1',
                     style={"font-size": "1.2rem", "margin-bottom": "30px"},
                 ),
                 dbc.Row([
@@ -164,7 +169,8 @@ layout = [
 
 
 @app.callback(
-    [Output('html_output', 'children'),
+    [Output('html_output_box0', 'children'),
+     Output('html_output_box1', 'children'),
      Output('url_source', 'children'),
      Output('url_source', 'href'),
      Output('table_output', 'children')],
@@ -189,7 +195,8 @@ def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11)
         lang2 = 'definition'
 
     # get the content from dictionary
-    word_url, html_elems, content_df, elems_norm = dico.get_translation_or_definition(input_word, lang1, lang2)
+    # word_url, html_elems, content_df, elems_norm = dico.get_translation_or_definition(input_word, lang1, lang2)
+    word_url, box0_elms_norm, box1_elms_norm, content_df = dico.get_translation_or_definition(input_word, lang1, lang2)
 
     # table in dash format
     data_table = dash_table.DataTable(
@@ -208,7 +215,11 @@ def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11)
             }
         ],
     )
-    return [dash_dangerously_set_inner_html.DangerouslySetInnerHTML(elems_norm), word_url, word_url, [data_table]]
+    return [dash_dangerously_set_inner_html.DangerouslySetInnerHTML(box0_elms_norm),
+            dash_dangerously_set_inner_html.DangerouslySetInnerHTML(box1_elms_norm),
+            word_url,
+            word_url,
+            [data_table]]
 
 
 @app.callback(
