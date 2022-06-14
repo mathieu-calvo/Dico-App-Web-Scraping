@@ -15,7 +15,7 @@ unclicked_style = {'border': 'None', 'background-color': '#f9f9f9'}
 
 # list of countries as accepted by dictionary AND in order displayed through flags
 ordered_flags_from = ['francais', 'anglais', 'italien', 'espagnol', 'portugais']
-ordered_flags_to = ['definition', 'francais', 'anglais', 'italien', 'espagnol', 'portugais']
+ordered_flags_to = ['francais', 'anglais', 'italien', 'espagnol', 'portugais']
 
 # create dictionary and initiate it
 dico = ReversoDictionary()
@@ -79,18 +79,9 @@ layout = [
                           placeholder="Type a word here",
                           debounce=True,
                           className="search_bar")
-            ], xs=12, md=3,  align='center'),
+            ], xs=12, md=4,  align='center'),
             dbc.Col([
                 html.Img(src=app.get_asset_url("destination_icon.png"), className='icon'),
-                html.Button([
-                    html.Img(
-                        src=app.get_asset_url("definition_icon.png"),
-                        className='flag',
-                    )
-                    ],
-                    id='definition_flag_to',
-                    style={'border': 'solid 2px black', 'background-color': 'lightgreen'},
-                    className='equalButton'),
                 html.Button([
                     html.Img(
                         src=app.get_asset_url("fra_flag.png"),
@@ -98,7 +89,7 @@ layout = [
                     )
                     ],
                     id='francais_flag_to',
-                    style={'border': 'None', 'background-color': '#f9f9f9'},
+                    style={'border': 'solid 2px black', 'background-color': 'lightgreen'},
                     className='equalButton'),
                 html.Button([
                     html.Img(
@@ -136,7 +127,7 @@ layout = [
                     id='portugais_flag_to',
                     style={'border': 'None', 'background-color': '#f9f9f9'},
                     className='equalButton'),
-            ], xs=12, md=5, align='center'),
+            ], xs=12, md=4, align='center'),
         ], justify='center', align='center', style={"margin-top": "20px", "margin-bottom": "20px"}),
         dbc.Row([
             dbc.Col([
@@ -178,14 +169,14 @@ layout = [
     [Input(f'{f}_flag_to', 'style') for f in ordered_flags_to],
     prevent_initial_call=True,
 )
-def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11):
+def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10):
     """ Show definition or translation to user whenever they input a new word or change the type of action """
     if input_word is None:
         raise PreventUpdate
 
     # first infer languages from style of buttons
     lang1_idx = [b['border'] != "None" for b in [s1, s2, s3, s4, s5]].index(True)
-    lang2_idx = [b['border'] != "None" for b in [s6, s7, s8, s9, s10, s11]].index(True)
+    lang2_idx = [b['border'] != "None" for b in [s6, s7, s8, s9, s10]].index(True)
     lang1 = ordered_flags_from[lang1_idx]
     lang2 = ordered_flags_to[lang2_idx]
 
@@ -229,7 +220,7 @@ def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11)
     [State(f'{f}_flag_to', 'style') for f in ordered_flags_to],
     prevent_initial_call=True,
 )
-def update_buttons_style(n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11):
+def update_buttons_style(n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10):
     """ Change buttons' style based on flags user clicked on """
 
     # work out what button is triggering the callback
@@ -239,7 +230,7 @@ def update_buttons_style(n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, s1, s2, s
 
     # get current destination and source - infer from style of buttons
     lang1_idx = [b['border'] != "None" for b in [s1, s2, s3, s4, s5]].index(True)
-    lang2_idx = [b['border'] != "None" for b in [s6, s7, s8, s9, s10, s11]].index(True)
+    lang2_idx = [b['border'] != "None" for b in [s6, s7, s8, s9, s10]].index(True)
     from_flag = ordered_flags_from[lang1_idx]
     to_flag = ordered_flags_to[lang2_idx]
 
