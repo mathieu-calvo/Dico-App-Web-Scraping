@@ -50,7 +50,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-There are many great resources available online or on your mobile to learn languages, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create an application that let me save **relevant definitions and translations**, and allow me to **practice effectively** by focusing on where improvement is needed  -- I think this is it.
+There are many great resources available online or on your mobile to learn languages, however, I didn't find one that really suit my needs so I created [this](https://dictionary-dash-app.herokuapp.com/) enhanced one. I want to create an application that let me save **relevant definitions and translations**, and allow me to **practice effectively** by focusing on where improvement is needed  -- I think this is it.
 
 Here's why:
 * Vocabulary is an essential part of learning a language

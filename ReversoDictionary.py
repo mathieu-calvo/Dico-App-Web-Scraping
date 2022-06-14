@@ -13,7 +13,7 @@ class ReversoDictionary:
     def __init__(self, base_url=None, hdr=None, lang_dict=None, all_lang=None):
         """
         Create an instance of object to interact with the Reverso dictionary online and retrieve translations/defitions
-        programmatically, and parse them to have them in a structured format
+        programmatically, and parse them to have them in a more structured format
         
         Important: when dealing with text, understanding encoding is paramount:
         http://sametmax.com/lencoding-en-python-une-bonne-fois-pour-toute/
@@ -183,19 +183,19 @@ class ReversoDictionary:
         """
         Method to translate word, by querying url for that word, after doing some normalization. It first 
         set up the operation to be performed. if 'definition' is used as a second parameter it goes and fetch
-        french definition (definitions in other languages not available from website) 
+        the definition (not available in all languages from website) 
         
         Args:
             mot (str): word to translate/define
             lang1 (str): language to translate from
             lang2 (str): language to translate to
-            target (bool, optional): whether to see only content in target language
+            target (bool, optional): whether to see only content in target language in content-df
         
         Returns:
             word_url (str): URL queried, for debugging purposes
-            html_elems (bs4.element.ResultSet): list containing html elements
-            content_df (pd.DataFrame): frame with content organized
-            elems_norm (str): raw html in str format
+            box0_elems_norm (str): raw html in str format for main translate box
+            box1_elems_norm (str): raw html in str format for second translate box
+            content_df (pd.DataFrame): frame with content organized for all page
         """
         # first set up translation type
         # initial checks
@@ -217,6 +217,22 @@ class ReversoDictionary:
         res.raise_for_status()
         # parse resquest response
         soup = bs4.BeautifulSoup(res.text, "html.parser")
+        # remove items I don't want to see - like logos
+        element = soup.find("div", id="dicoCopyright")
+        if element:
+            element.decompose()
+        elements = soup.find_all("div", {"class": "dicoCopyr"})
+        if elements:
+            for element in elements:
+                element.decompose()
+        elements = soup.find_all("div", {"class": "logocorner"})
+        if elements:
+            for element in elements:
+                element.decompose()
+        elements = soup.find_all("img", {"class": "collins_logo_right"})
+        if elements:
+            for element in elements:
+                element.decompose()
         # look for specific tags
         # 'direction' for everything related to translation
         # 'direction' and something with 'target' for everything related to translation in the target language
@@ -224,13 +240,18 @@ class ReversoDictionary:
             html_elems = soup.select('span[direction^="target"]')
         else:
             html_elems = soup.select('span[direction]')
-        # do some normalization to get a nice html, removing list characters like squared brackets and commas
-        # also take care of encoding normalization
-        elems_norm = str(html_elems).replace("[", "").replace("]", "").replace(",", "")
-        elems_norm = unicodedata.normalize('NFKD', elems_norm)
         # structure html elements into a frame
         content_df = self._parse_html_elements(html_elems, lang1, lang2, verbose=False, ffill=False)
-        return word_url, html_elems, content_df, elems_norm
+        # selecting only translate boxes I am interested in for raw html
+        translate_box0_elems = soup.find_all("div", {"class": "translate_box0"})
+        translate_box1_elems = soup.find_all("div", {"id": "translate_box1"})
+        # do some normalization to get a nice html, removing list characters like squared brackets and commas
+        # also take care of encoding normalization
+        box0_elems_norm = str(translate_box0_elems).replace("[", "").replace("]", "").replace(",", "")
+        box0_elems_norm = unicodedata.normalize('NFKD', box0_elems_norm)
+        box1_elems_norm = str(translate_box1_elems).replace("[", "").replace("]", "").replace(",", "")
+        box1_elems_norm = unicodedata.normalize('NFKD', box1_elems_norm)
+        return word_url, box0_elems_norm, box1_elems_norm, content_df
 
 
 if __name__ == "__main__":
@@ -238,4 +259,4 @@ if __name__ == "__main__":
     input_word = 'croquant'
     lang_from = 'fr'
     lang_to = 'def'
-    w_url, html_elms, table_df, elms_norm = app.get_translation_or_definition(input_word, lang_from, lang_to)
+    w_url, box0_elms_norm, box1_elms_norm, table_df = app.get_translation_or_definition(input_word, lang_from, lang_to)
