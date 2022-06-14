@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import pandas as pd
 from dash import html, dash_table, callback_context as ctx
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
@@ -195,7 +194,6 @@ def update_html_output(input_word, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11)
         lang2 = 'definition'
 
     # get the content from dictionary
-    # word_url, html_elems, content_df, elems_norm = dico.get_translation_or_definition(input_word, lang1, lang2)
     word_url, box0_elms_norm, box1_elms_norm, content_df = dico.get_translation_or_definition(input_word, lang1, lang2)
 
     # table in dash format
