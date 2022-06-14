@@ -179,6 +179,10 @@ th {
 
 
 @media (max-width: 350px) {
+  .sneak_peek_button {
+    height: 60px;
+    margin-right: 10px;
+  }
   .search_bar {
     font-size: 0.8rem;
   }
@@ -202,6 +206,10 @@ th {
 }
 
 @media (max-width: 450px) {
+  .sneak_peek_button {
+    height: 80px;
+    margin-right: 10px;
+  }
   .search_bar {
     font-size: 1.1rem;
   }
@@ -264,6 +272,10 @@ th {
 
 
 @media (min-width: 900px) {
+  .sneak_peek_button {
+    height: 150px;
+    margin-right: 10px;
+  }
   .search_bar {
     font-size: 1.7rem;
   }
