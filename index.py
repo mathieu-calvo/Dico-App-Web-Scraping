@@ -47,7 +47,7 @@ app.layout = html.Div([
                         dcc.Link("Explore", href="/"),
                         dcc.Link("Exploit", href="/"),
                     ],
-                    style={"display": "flex", "align-items": "center", "justify-content": "center"},
+                    style={"align-items": "center", "justify-content": "center"},
                 ),
                 html.Div(
                     id="mobile_tabs",
