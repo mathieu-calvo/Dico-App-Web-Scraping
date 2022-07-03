@@ -47,11 +47,13 @@ app.layout = html.Div([
                         dcc.Link("Explore", href="/"),
                         dcc.Link("Exploit", href="/"),
                     ],
+                    style={"display": "flex", "align-items": "center", "justify-content": "center"},
                 ),
                 html.Div(
                     id="mobile_tabs",
                     className="row tabs",
-                    style={"display": "none", "background-color": "white"},
+                    style={"display": "none", "background-color": "white",
+                           "align-items": "center", "justify-content": "center"},
                     children=[
                         dcc.Link("Explore", href="/"),
                         dcc.Link("Exploit", href="/"),
@@ -63,53 +65,6 @@ app.layout = html.Div([
         ]),
     ], fluid=True),
 ])
-
-# app.layout = html.Div(
-#     [
-#         html.Div(
-#             className="row header",
-#             children=[
-#                 html.Button(id="menu", children=dcc.Markdown("&#8801")),
-#                 html.Span(
-#                     className="app-title",
-#                     children=[
-#                         dcc.Markdown("**Dictionary App**", style={'color': 'white', "margin-top": "10px"}),
-#                     ],
-#                 ),
-#                 html.Img(src=app.get_asset_url("git_logo.png"), className='icon'),
-#                 html.A(
-#                     id="github_link",
-#                     children="View on Github",
-#                     href="https://github.com/mathieu-calvo/Dico-App-Web-Scraping/",
-#                     className='button',
-#                 )
-#             ],
-#             style={'background': '#0C4142', 'color': 'white'},
-#         ),
-#         html.Div(
-#             id="tabs",
-#             className="row tabs",
-#             children=[
-#                 dcc.Link("Explore", href="/"),
-#                 dcc.Link("Exploit", href="/"),
-#             ],
-#         ),
-#         html.Div(
-#             id="mobile_tabs",
-#             className="row tabs",
-#             style={"display": "none", "background-color": "white"},
-#             children=[
-#                 dcc.Link("Explore", href="/"),
-#                 dcc.Link("Exploit", href="/"),
-#             ],
-#         ),
-#         dcc.Location(id="url", refresh=False),
-#         html.Div(id="tab_content"),
-#     ],
-#     style={"margin": "0%"},
-# )
-
-# Update the index
 
 
 @app.callback(
