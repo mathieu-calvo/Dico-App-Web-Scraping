@@ -2,6 +2,7 @@ import base64
 
 from dash import html, dcc
 from dash.dependencies import Input, Output, State
+import dash_bootstrap_components as dbc
 
 from app import app
 from panels import explore, exploit
@@ -9,63 +10,104 @@ from panels import explore, exploit
 
 server = app.server
 
-app.layout = html.Div(
-    [
-        html.Div(
-            className="row header",
-            children=[
-                html.Button(id="menu", children=dcc.Markdown("&#8801")),
-                html.Span(
-                    className="app-title",
+app.layout = html.Div([
+    dbc.Container([
+        dbc.Row([
+            dbc.Col([
+                html.Div(
+                    className="row header",
                     children=[
-                        dcc.Markdown("**Dictionary App**", style={'color': 'white', "margin-top": "10px"}),
+                        html.Button(id="menu", children=dcc.Markdown("&#8801")),
+                        html.Span(
+                            className="app-title",
+                            children=[
+                                dcc.Markdown("**Dictionary App**",
+                                             style={'color': 'white', "margin-top": "10px", "width": "auto"}),
+                            ],
+                        ),
+                        html.Img(src=app.get_asset_url("git_logo.png"), className='icon', style={"width": "auto"}),
+                        html.A(
+                            id="github_link",
+                            children="View on Github",
+                            href="https://github.com/mathieu-calvo/Dico-App-Web-Scraping/",
+                            className='button',
+                            style={"width": "auto"},
+                        )
+                    ],
+                    style={'background': '#0C4142', 'color': 'white'},
+                ),
+            ]),
+        ], align='start', justify='center'),
+        dbc.Row([
+            dbc.Col([
+                html.Div(
+                    id="tabs",
+                    className="row tabs",
+                    children=[
+                        dcc.Link("Explore", href="/"),
+                        dcc.Link("Exploit", href="/"),
                     ],
                 ),
-                html.Img(src=app.get_asset_url("git_logo.png"), className='icon'),
-                html.A(
-                    id="github_link",
-                    children="View on Github",
-                    href="https://github.com/mathieu-calvo/Dico-App-Web-Scraping/",
-                    className='button',
-                )
-            ],
-            style={'background': '#0C4142', 'color': 'white'},
-        ),
-        html.Div(
-            id="tabs",
-            className="row tabs",
-            children=[
-                dcc.Link("Explore", href="/"),
-                dcc.Link("Exploit", href="/"),
-            ],
-        ),
-        html.Div(
-            id="mobile_tabs",
-            className="row tabs",
-            style={"display": "none", "background-color": "white"},
-            children=[
-                dcc.Link("Explore", href="/"),
-                dcc.Link("Exploit", href="/"),
-            ],
-        ),
-        dcc.Location(id="url", refresh=False),
-        html.Div(id="tab_content"),
-        html.Link(
-            href="https://use.fontawesome.com/releases/v5.2.0/css/all.css",
-            rel="stylesheet",
-        ),
-        html.Link(
-            href="https://fonts.googleapis.com/css?family=Dosis", rel="stylesheet"
-        ),
-        html.Link(
-            href="https://fonts.googleapis.com/css?family=Open+Sans", rel="stylesheet"
-        ),
-        html.Link(
-            href="https://fonts.googleapis.com/css?family=Ubuntu", rel="stylesheet"
-        ),
-    ],
-    style={"margin": "0%"},
-)
+                html.Div(
+                    id="mobile_tabs",
+                    className="row tabs",
+                    style={"display": "none", "background-color": "white"},
+                    children=[
+                        dcc.Link("Explore", href="/"),
+                        dcc.Link("Exploit", href="/"),
+                    ],
+                ),
+                dcc.Location(id="url", refresh=False),
+                html.Div(id="tab_content"),
+            ]),
+        ]),
+    ], fluid=True),
+])
+
+# app.layout = html.Div(
+#     [
+#         html.Div(
+#             className="row header",
+#             children=[
+#                 html.Button(id="menu", children=dcc.Markdown("&#8801")),
+#                 html.Span(
+#                     className="app-title",
+#                     children=[
+#                         dcc.Markdown("**Dictionary App**", style={'color': 'white', "margin-top": "10px"}),
+#                     ],
+#                 ),
+#                 html.Img(src=app.get_asset_url("git_logo.png"), className='icon'),
+#                 html.A(
+#                     id="github_link",
+#                     children="View on Github",
+#                     href="https://github.com/mathieu-calvo/Dico-App-Web-Scraping/",
+#                     className='button',
+#                 )
+#             ],
+#             style={'background': '#0C4142', 'color': 'white'},
+#         ),
+#         html.Div(
+#             id="tabs",
+#             className="row tabs",
+#             children=[
+#                 dcc.Link("Explore", href="/"),
+#                 dcc.Link("Exploit", href="/"),
+#             ],
+#         ),
+#         html.Div(
+#             id="mobile_tabs",
+#             className="row tabs",
+#             style={"display": "none", "background-color": "white"},
+#             children=[
+#                 dcc.Link("Explore", href="/"),
+#                 dcc.Link("Exploit", href="/"),
+#             ],
+#         ),
+#         dcc.Location(id="url", refresh=False),
+#         html.Div(id="tab_content"),
+#     ],
+#     style={"margin": "0%"},
+# )
 
 # Update the index
 
