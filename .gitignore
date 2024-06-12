@@ -1,4 +1,5 @@
 venv
+venvlean
 *.pyc
 .DS_Store
 .env
