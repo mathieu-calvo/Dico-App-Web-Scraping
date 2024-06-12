@@ -1,6 +1,8 @@
 venv
-venvlean
+venvlean/
 *.pyc
 .DS_Store
 .env
+.venv
+.venvlean
 *.ipynb
