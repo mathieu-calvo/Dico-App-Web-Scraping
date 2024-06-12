@@ -36,7 +36,8 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
-        <li><a href="#herokudeploy">Heroku Deployment</a></li>
+        <li><a href="#pythonanywheredeploy">Python Anywhere Deployment</a></li>
+        <li><a href="#herokudeploy">Heroku Deployment (OLD)</a></li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -65,7 +66,8 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 Major frameworks that I built the project with:
 * [Dash](https://plotly.com/dash/)
-* [Heroku](https://www.heroku.com/)
+* [Python Anywhere](https://www.pythonanywhere.com/)
+* [Heroku (OLD)](https://www.heroku.com/)
 
 It's built on top of the following public website:
 * [Reverso](https://dictionary.reverso.net/)
@@ -119,8 +121,37 @@ You'll need to have Python installed on your machine.
        Use a production WSGI server instead.
      * Debug mode: on
    ```
+### Python Anywhere Deployment
 
-### Heroku Deployment
+Moved to PythonAnwhere in 2024 when Heroku stopped being free. It is also easier to deploy. Free account is limited to one web app with 512MB of file storage (as of June 2024).
+
+1. Transfer repository to PythonAnyWhere
+- Create new PythonAnyWhere account
+- Open new Bash console
+- ```git clone [copy-paste clone link from GitHub]```
+
+2. Create virtual environment on PythonAnyWhere and install libraries:
+- ```mkvirtualenv myvirtualenv --python=/usr/bin/python3.8```
+- ```cd [git repository name from step 1]``` here ```Dico-App-Web-Scraping```
+- ```pip install -r requirements.txt```
+
+3.	Add your new app to PythonAnyWhere:
+- Click on Add a New Web App button
+- Next 🡪 Flask 🡪 Python 3.8 🡪 Next
+    
+4.	Once all libraries from requirements.txt have been installed, go to Web tab if need be, 
+- change the “Source Code” to: ```home/myusername/[git repository name from step 1]]```
+- under the “Virtualenv” section, type ```myvirtualenv``` (which was the name you gave to your PythonAnyWhere virtual environment from step 2)
+- under the “WSGI configuration file” section, update the file. 
+    - Update the end of Project home’s path to match your app name. ```Dico-App-Web-Scraping```
+    - Change last line of code to: ```from index import server as application```
+    - Save the file
+- go back to “Web” tab and refresh the app with the Reload button
+
+Free accounts have only 512MB of file storage. If you delete an app, the virtual environment doesn’t get deleted with it. Therefore, to save space, remove the old virtual environment by opening your Bash and typing:
+```rm -rf /home/myusername/.virtualenvs/myvirtualenv```
+
+### Heroku Deployment (OLD)
 
 Heroku can be quite confusing at first as it stores its own codebase for builds and deployments, and it not necessarily match what you have on Git, hence the confusion. 
 
@@ -165,6 +196,7 @@ Project Link: [https://github.com/mathieu-calvo/Dico-App-Web-Scraping](https://g
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
+* [Deploying Dash apps using Python anywhere](https://www.youtube.com/watch?v=WOWVat5BgM4)
 * [Heroku for Sharing Public Dash apps for Free](https://dash.plotly.com/deployment)
 * [Getting started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python)
 * [From Prototype to Cloud: A Python Recipe Converter](https://www.justinmklam.com/posts/2018/04/python-flask-heroku-tutorial/?c=7013A000000txcVQAQ&utm_campaign=Onboarding-2.0-Deploy-1.1-Python&utm_medium=email&utm_source=nurture&utm_content=community&utm_term=flask-tutorial-recipe-converter)
